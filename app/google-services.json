@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "698207731418",
+    "firebase_url": "https://sistempakartbc-438b0.firebaseio.com",
+    "project_id": "sistempakartbc-438b0",
+    "storage_bucket": "sistempakartbc-438b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698207731418:android:d0521648d6fbfcea",
+        "android_client_info": {
+          "package_name": "com.example.fifin.sistem_pakar_tbc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698207731418-b8mrmndck6eoijlr46p0ier1hmh3f75h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYuMuD7ZkiaFl4fSY6wFMXR_8JHgT3rtc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698207731418-b8mrmndck6eoijlr46p0ier1hmh3f75h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

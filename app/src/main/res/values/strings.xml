@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SISTEM PAKAR TBC</string>
+    <string name="deteksi_penyakit">Dari gejala-gejala yang anda alami, sistem mendeteksi kemungkinan anda menderita penyakit </string>
+    <string name="solusi">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam aspernatur facilis iure molestias, natus nesciunt quidem veritatis vero! In nesciunt quis tempora! Eius incidunt nihil porro recusandae velit vero!</string>
+</resources>
