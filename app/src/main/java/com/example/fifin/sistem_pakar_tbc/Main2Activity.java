@@ -1,6 +1,7 @@
 package com.example.fifin.sistem_pakar_tbc;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -30,8 +31,9 @@ public class Main2Activity extends AppCompatActivity {
     DataPertanyaan dataPertanyaan;
     HashMap<String,DataPertanyaan> diagnosa;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference gejala=db.collection("gejala");
-    private DocumentReference noteRef = gejala.document("g1");
+    private CollectionReference gejalaFF=db.collection("gejala");
+    private CollectionReference diagnosaFF=db.collection("diagnosa");
+//    private DocumentReference noteRef = gejala.document("g1");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,22 +61,31 @@ public class Main2Activity extends AppCompatActivity {
         diagnosa.put(String.valueOf(4),dataPertanyaan);
 
 
-        DataPertanyaan data1=diagnosa.get("0");
-        setTvPertanyaan(data1.getPertanyaan(),data1.getId());
+//        DataPertanyaan data1=diagnosa.get("0");
+        DocumentSnapshot idPertama=diagnosaFF.document("D1").get().getResult();
+        String kodeDiagnosa= idPertama.getString("kode_diagnosa");
+        String pertanyaan= idPertama.getString("pertanyaan");
+        setTvPertanyaan(pertanyaan,kodeDiagnosa);
+
         if (!rbY.isChecked()&&!rbN.isChecked()) btnLanjut.setClickable(false);
         else btnLanjut.setClickable(true);
+
         btnLanjut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String jawaban = null;
                 if (rbY.isChecked()) jawaban="y";
                 if(rbN.isChecked()) jawaban="n";
+                btnLanjut.setBackgroundColor(Color.GRAY);
+                btnLanjut.setClickable(false);
                 getPertanyaan(jawaban);
             }
         });
     }
 //    https://developer.android.com/tools/building/multidex.html
     private void setTvPertanyaan(String pertanyaan, String idPertanyaan){
+        btnLanjut.setClickable(true);
+        btnLanjut.setBackgroundColor(Color.rgb(66,166,247));
         tvPertanyaan.setText(pertanyaan);
         tvIdPertanyaan.setText(idPertanyaan);
     }
@@ -83,32 +94,37 @@ public class Main2Activity extends AppCompatActivity {
         String id=tvIdPertanyaan.getText().toString();
         String idBaru=getIdBaru(id,jawaban);
 
-        if(cekKesimpulan(idBaru)){
-            Intent intent=new Intent(Main2Activity.this,Main6Activity.class);
-            startActivity(intent);
-//            Toast.makeText(this,"selesai",Toast.LENGTH_LONG).show();
-        }else{
-           getPertanyaanDariDb(idBaru);
-        }
+        getPertanyaanDariDb(idBaru);
+
     }
 
     private String getIdBaru(String id, String jawaban){
-       return (jawaban.equals("y"))?diagnosa.get(id).getJawabanYa():diagnosa.get(id).getJawabanTidak();
+        if(jawaban.equals("y")){
+           return diagnosaFF.document(id).get().getResult().getString("jawaban_ya");
+        }else{
+            return diagnosaFF.document(id).get().getResult().getString("jawaban_tidak");
+        }
     }
 
     private void getPertanyaanDariDb(final String idBaru){
-         noteRef.get()
+        diagnosaFF.document(idBaru).get()
          .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
              @Override
              public void onSuccess(DocumentSnapshot documentSnapshot) {
                  if (documentSnapshot.exists()) {
-                     String title = documentSnapshot.getString("kode_gejala");
-                     String description = documentSnapshot.getString("nama_gejala");
+                     String kodeDiagnosa = documentSnapshot.getString("kode_diagnosa");
+                     String pertanyaan = documentSnapshot.getString("pertanyaan");
+                     String selesai = documentSnapshot.getString("selesai");
 
+                     if(selesai.equals("y")){
+                         Intent intent=new Intent(Main2Activity.this,Main6Activity.class);
+                         startActivity(intent);
+                     }else{
+                         setTvPertanyaan(pertanyaan,kodeDiagnosa);
+                     }
                      //Map<String, Object> note = documentSnapshot.getData();
-                    setTvPertanyaan(diagnosa.get(idBaru).getPertanyaan(),diagnosa.get(idBaru).getId());
 //                     textViewData.setText("Title: " + title + "\n" + "Description: " + description);
-                     Toast.makeText(Main2Activity.this, "Title: " + title + "\n" + "Description: " + description, Toast.LENGTH_SHORT).show();
+//                     Toast.makeText(Main2Activity.this, "Title: " + title + "\n" + "Description: " + description, Toast.LENGTH_SHORT).show();
                  } else {
                      Toast.makeText(Main2Activity.this, "Document does not exist", Toast.LENGTH_SHORT).show();
                  }
@@ -122,10 +138,5 @@ public class Main2Activity extends AppCompatActivity {
              }
          });
        
-    }
-
-    private boolean cekKesimpulan(String id) {
-
-        return (id=="selesai")?true:false;
     }
 }
