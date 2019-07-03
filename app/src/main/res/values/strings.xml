@@ -2,4 +2,17 @@
     <string name="app_name">SISTEM PAKAR TBC</string>
     <string name="deteksi_penyakit">Dari gejala-gejala yang anda alami, sistem mendeteksi kemungkinan anda menderita penyakit </string>
     <string name="solusi">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam aspernatur facilis iure molestias, natus nesciunt quidem veritatis vero! In nesciunt quis tempora! Eius incidunt nihil porro recusandae velit vero!</string>
+    <string name="title_activity_form_user">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
 </resources>
