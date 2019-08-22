@@ -82,14 +82,12 @@ public class FormUserActivity extends AppCompatActivity {
 
     private void simpanDataUser(Map<String,Object> user) {
         final String email=user.get("email").toString();
-        Toast.makeText(getApplicationContext(),email,Toast.LENGTH_SHORT).show();
-
         users.document(email).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
 
-                Intent intent=new Intent(FormUserActivity.this,MainActivity.class);
-                intent.putExtra(MainActivity.EMAIL,email);
+                Intent intent=new Intent(FormUserActivity.this,DiagnosaActivity.class);
+                intent.putExtra(DiagnosaActivity.EMAIL,email);
                 startActivity(intent);
             }
         }).addOnFailureListener(new OnFailureListener() {

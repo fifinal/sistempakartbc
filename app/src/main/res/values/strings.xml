@@ -15,4 +15,28 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="info_tbc">
+        \t\t Tuberkulosis merupakan penyakit infeksi yang mudah menular melalui udara yang disebabkan oleh kuman
+        Mycobacterium Tuberculosis. Tuberkulosis sebagian besar menyerang paru namun penyakit ini juga menyerang
+        organ tubuh lain yang disebut ekstra paru. Kurangnya fasilitas dan pengetahuan masyarakat dapat memperlambat
+        diagnosa awal Tuberkulosis Ekstra Paru sehingga dapat membahayakan keselamatan masyarakat.
+        \n\t\t Maka diperlukannya sistem pakar yang berguna untuk mendiagnosa penyakit Tuberkulosis yang dapat mempermudah
+        penderita dalam melakukan diagnosa awal penyakit Tuberkulosis agar segera mendapatkan penanganan yang
+        tepat
+    </string>
+    <string name="tentang_aplikasi">
+        Aplikasi ini akan mendiagnosa penyakit dengan melakukan penelusuran
+        gejala-gejala yang ada berdasarkan inferensi forward chaining.
+        Aplikasi ini menghasilkan sebuah sistem pakar yang dimanfaatkan untuk membantu tenaga kesehatan dan
+        masyarakat umum dalam mendiagnosa awal penyakit Tuberkulosis.
+    </string>
+    <string name="sistem_pakar">
+         Sistem pakar adalah suatu program komputer atau sistem yang berusaha mengadopsi pengetahuan manusia ke komputer yang dirancang untuk memodelkan kemampuan menyelesaikan masalah seperti layaknya seorang pakar mengenai suatu bidang spesifik
+    </string>
+    <string name="forward">
+        Penelitian menggunakan runut maju (Forward Chaining).
+        Runut maju berarti menggunakan himpunankondisi-aksi. Dalam metode ini, data digunakan
+        untuk menentukan aturan mana yang dijalankan kemudian aturan tersebut dijalankan, proses diulang
+        sampai ditemukan suatu hasil
+    </string>
 </resources>

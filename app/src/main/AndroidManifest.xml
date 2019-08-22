@@ -26,7 +26,6 @@
         <activity android:name=".DiagnosaActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".TentangActivity" />
-        <activity android:name=".Main5Activity" />
         <activity android:name=".KesimpulanActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".FormUserActivity"></activity>

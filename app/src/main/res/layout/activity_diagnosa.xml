@@ -79,7 +79,7 @@
             android:paddingBottom="60dp"
             android:paddingRight="40dp"
             android:paddingLeft="40dp"
-            android:text="tunggu pertanyaan seleai di load..."
+            android:text="tunggu pertanyaan selesai di load..."
             android:textSize="20sp"
             />
         <TextView

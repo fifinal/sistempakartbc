@@ -33,12 +33,9 @@ public class KesimpulanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kesimpulan);
         tvKesimpulanPenyakit=(TextView)findViewById(R.id.tv_kesimpulan_penyakit);
-        tvSolusi=(TextView)findViewById(R.id.tv_solusi);
 
         String idPenyakit=getIntent().getStringExtra(ID_PENYAKIT);
         String email=getIntent().getStringExtra(EMAIL);
-
-        Toast.makeText(getApplicationContext(),email,Toast.LENGTH_LONG).show();
 
         Map<String, Object> hasil = new HashMap<>();
         hasil.put("email", email);
@@ -55,9 +52,7 @@ public class KesimpulanActivity extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String namaPenyakit=documentSnapshot.getString("nama_penyakit");
-                String solusi=documentSnapshot.getString("solusi");
                 tvKesimpulanPenyakit.setText(namaPenyakit);
-                tvSolusi.setText(solusi);
             }
         });
     }
